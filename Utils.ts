@@ -191,11 +191,11 @@ const BotUtils = {
     const notWorkingToday = [];
 
     allUsers.forEach(user => {
-      const userFullName: string = BotUtils.getUserFullName(user, webexClient);
-      if (userFullName.includes("PTO")) {
+      const userDetails = webexClient.getUserDetails(user)
+      if (userDetails.status == 'DoNotDisturb') {
         notWorkingToday.push({
           user: user,
-          reason: "PTO",
+          reason: "Do Not Disturb",
         });
       }
     })
