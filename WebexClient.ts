@@ -2,7 +2,7 @@ function WebexClient(options?) {
   const DEFAULT_REQUEST_ATTEMPTS = 20;
   const debug = options && options.debug;
   const requestAttempts = options && options.requestAttempts;
-  const requestManager = new RequestManager('https://webexapis.com/v1');
+  const requestManager = new RequestManager('https://api.ciscospark.com/v1');
   requestManager.setAuthorization('Bearer ' + MainConfig.calmBotAuthToken);
   requestManager.setRequestAttempts(requestAttempts || DEFAULT_REQUEST_ATTEMPTS);
   requestManager.setFetchRetryInterval(1000);
