@@ -1,0 +1,13 @@
+{
+  "name": "webex-status-bot",
+  "version": "1.0.0",
+  "description": "/* * Deployment of code * https://developers.google.com/apps-script/guides/clasp * * */",
+  "main": "Main.ts",
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.33"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
