@@ -4,13 +4,14 @@ function doGet(e) {
 }
 
 function doPost(e) {
-  WebHookHandler.handleMessageEvent(e.postData.contents);
+  WebHookHandler.handleMessageEvent(e);
   return ContentService.createTextOutput('handled doPost');
 }
 
 class WebHookHandler {
 
-  static handleMessageEvent(eventData) {
+  static handleMessageEvent(event) {
+    const eventData = event.postData.contents
     try {
       const messageData = JSON.parse(eventData).data;
       if (messageData.personEmail !== MainConfig.botEmail) {
@@ -27,7 +28,10 @@ class WebHookHandler {
       }
     } catch (e) {
       console.error(e);
-      debugMessage('Failed to handle message event');
+      console.log(event.postData.contents)
+      console.log(event.postData)
+      console.log(event)
+      debugMessage(`Failed to handle message event: ${e.message}. See detailed logs at google apps script.`);
     }
   }
 
@@ -42,11 +46,12 @@ class WebHookHandler {
         return;
       }
       if (BotUtils.isBot(user)) {
-        let rememoryCommand = message.text.match(/\w+ Reminder: "(.+)" -/);
+        // example: Tbot Reminder: "shuffle" -created by Bogdan Kovalev
+        let rememoryCommand = message.text.match(/Tbot Reminder: "(.+)" -/);
         if (rememoryCommand) {
           rememoryCommand = rememoryCommand[1];
           debugMessage(`matched Rememory bot command: '${rememoryCommand}'\noriginal: '${message.text}'`);
-          message.text = `${MainConfig.botName} ${rememoryCommand}`;
+          message.text = `Tbot ${rememoryCommand}`;
           // TODO: update sender using created by
         }
       }
