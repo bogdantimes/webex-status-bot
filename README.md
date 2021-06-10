@@ -32,7 +32,7 @@
 4. Run `clasp push`. Type `Yes` for `Manifest file has been updated. Do you want to push and overwrite?`
 5. Run `clasp open` and open the project link in the browser.
 6. In browser, open `Test.gs` file and run the `test` function to initialize a default config.
-7. Now deploy the first version of the script: `Public` -> `Deploy as webapp...` -> Click `Update`.
+7. Now deploy the first version of the script: `Publish` -> `Deploy as webapp...` -> Click `Update`.
    Copy `Web app URL`, it's your `webAppHook` for the MainConfig.
 8. In browser, open `File` -> `Project Properties` -> `Script Properties` and copy the content of property `Config`.
    This config has to be updated inline per your needs. For convenience, you can edit it in your favourite JSON editor
@@ -54,5 +54,7 @@
 
 To run functions, such as `Bot_AskStatuses`, `Bot_CheckStatuses`, on a regular basis, use the Google Apps Script triggers feature:
 ![img.png](img.png)
+
+Some functions require additional permissions. Run a desired function manually to explicitly give it permissions (one time operation).
 
 That's it!
