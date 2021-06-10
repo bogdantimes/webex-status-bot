@@ -192,7 +192,7 @@ const BotUtils = {
 
     allUsers
       .filter(user => webexClient.getUserDetails(user).status == 'OutOfOffice')
-      .forEach(user => notWorkingToday[user] = "Out Of Office")
+      .forEach(user => notWorkingToday[user] = "Out Of Office ✈️")
 
     return {
       workingToday: without(allUsers, Object.keys(notWorkingToday)),
