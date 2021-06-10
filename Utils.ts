@@ -188,21 +188,15 @@ const BotUtils = {
 
   getTeamMembersInfo(webexClient) {
     const allUsers = BotUtils.listAllTeamMembers();
-    const notWorkingToday = [];
+    const notWorkingToday = {};
 
-    allUsers.forEach(user => {
-      const userDetails = webexClient.getUserDetails(user)
-      if (userDetails.status == 'DoNotDisturb') {
-        notWorkingToday.push({
-          user: user,
-          reason: "Do Not Disturb",
-        });
-      }
-    })
+    allUsers
+      .filter(user => webexClient.getUserDetails(user).status == 'OutOfOffice')
+      .forEach(user => notWorkingToday[user] = "Out Of Office")
 
     return {
-      notWorkingToday: notWorkingToday,
-      workingToday: without(allUsers, notWorkingToday.map(u => u.user)),
+      workingToday: without(allUsers, Object.keys(notWorkingToday)),
+      notWorkingToday: Object.keys(notWorkingToday).map(user => ({user, reason: notWorkingToday[user]})),
     };
   },
 
