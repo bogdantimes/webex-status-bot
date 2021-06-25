@@ -59,7 +59,7 @@ const Reporter = (() => {
         const subject = 'Daily status for ' + formatDate(new Date());
 
         const htmlBody =
-          `Hi Priyanka,<br/><br/>Here is the team’s status for today.<br/><br/><br/>${teamsStatus}<br/><br/>Thanks,<br/>Roman`;
+          `Hi all,<br/><br/>Here is the team’s status for today.<br/><br/><br/>${teamsStatus}<br/><br/>Thanks,<br/>${MainConfig.botName}`;
 
         const to = MainConfig.dailyReportTo.join(',');
         const cc = [...MainConfig.managers, ...BotUtils.getTeamLeads()].join(',');
