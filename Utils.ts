@@ -97,6 +97,8 @@ const BotUtils = {
           if (!processedStatus.statusIsFine) {
             userStatusIssues.lackOfDetails.push(user);
           }
+        } else {
+          userStatusIssues.noStatus.push(user);
         }
       });
     return {
@@ -299,5 +301,5 @@ function printObject(object) {
 }
 
 function getHelpPage() {
-  return fmt(`[@${MainConfig.botName} Help Page](%s)`, MainConfig.helpPageUrl); // TODO: configure
+  return fmt(`[${MainConfig.botName} Help Page](%s)`, MainConfig.helpPageUrl);
 }
