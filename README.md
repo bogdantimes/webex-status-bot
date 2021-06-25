@@ -14,7 +14,7 @@
 ## Creating a project in Google Apps Script
 
 1. Run `clasp login`
-2. Run `clasp create`
+2. Run `clasp create --type standalone`
 3. Edit the file `.clasp.json` by adding `filePushOrder`:
   ```json
   {
