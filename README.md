@@ -63,4 +63,6 @@ That's it!
 
 BTC: bc1qw6huxuc20edg66ddj4k6ze9njkcsplkcjllcv3
 
-Doge: DTtRQJvF9SYF9kwhYnVm6hvXyPzyD4FVfm
+DOGE: DTtRQJvF9SYF9kwhYnVm6hvXyPzyD4FVfm
+
+Mastercard (USD, Monobank): 5375 4188 0074 7289
