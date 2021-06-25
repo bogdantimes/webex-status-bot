@@ -25,8 +25,20 @@ class Store {
 
   static get(key, defaultValue = null) {
     key = storeKey(key);
-    const value = Store.source.getProperty(key);
-    return value === undefined || value === null ? defaultValue : JSON.parse(value);
+    const selectedKeys = Store.source.getKeys().filter(k => k.startsWith(`${key}/`))
+    if (selectedKeys.length) {
+      // Iterate over selected keys that match `key/` and aggregate the result into an object.
+      // TODO: rewrite to support > 1 nested levels
+      return selectedKeys.reduce((props, k) => {
+        const val = Store.source.getProperty(k);
+        const subKey = k.split(`${key}/`)[1];
+        props[subKey] = val === undefined || val === null ? defaultValue : JSON.parse(val);
+        return props;
+      }, {})
+    } else {
+      const value = Store.source.getProperty(key);
+      return value === undefined || value === null ? defaultValue : JSON.parse(value);
+    }
   }
 
   static getOrSet(key, valueGetter) {
@@ -36,5 +48,6 @@ class Store {
   static remove(key) {
     key = storeKey(key);
     Store.source.deleteProperty(key);
+    Store.source.getKeys().filter(k => k.startsWith(`${key}/`)).forEach(k => Store.source.deleteProperty(k));
   }
 }

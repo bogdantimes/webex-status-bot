@@ -25,3 +25,5 @@ const Constants = {
 };
 
 const warning = '⚠️';
+
+const NotSpecified = 'NotSpecified';

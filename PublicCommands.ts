@@ -65,20 +65,26 @@ const PublicCommands = () => {
       evaluate(commandMessage, webexClient) {
         const config = MainConfig.get();
         config.debugRoomId = commandMessage.roomId
+        if (!config.dailyStatusRoomId || config.dailyStatusRoomId == NotSpecified) {
+          config.dailyStatusRoomId = commandMessage.roomId
+        }
+        if (!config.operationsRoomId || config.operationsRoomId == NotSpecified) {
+          config.operationsRoomId = commandMessage.roomId
+        }
         Store.set(Key.CONFIG, config)
-        BotUtils.sendDefaultCommandDoneReply(commandMessage, webexClient)
+        webexClient.sendMessageToRoom(commandMessage.roomId, mention(commandMessage.personEmail) + ', done. Use `show config` to check.');
       },
     },
     {
       name: 'Init Daily Status Room',
       adminsOnly: true,
-      description: `@${MainConfig.botName} **init daily statuses room**`,
+      description: `@${MainConfig.botName} **init status room**`,
       match: commandText => commandText.match(/^\w+[,]? init status room/i),
       evaluate(commandMessage, webexClient) {
         const config = MainConfig.get();
         config.dailyStatusRoomId = commandMessage.roomId
         Store.set(Key.CONFIG, config)
-        BotUtils.sendDefaultCommandDoneReply(commandMessage, webexClient)
+        webexClient.sendMessageToRoom(commandMessage.roomId, mention(commandMessage.personEmail) + ', done. Use `show config` to check.');
       },
     },
     {
@@ -90,7 +96,7 @@ const PublicCommands = () => {
         const config = MainConfig.get();
         config.operationsRoomId = commandMessage.roomId
         Store.set(Key.CONFIG, config)
-        BotUtils.sendDefaultCommandDoneReply(commandMessage, webexClient)
+        webexClient.sendMessageToRoom(commandMessage.roomId, mention(commandMessage.personEmail) + ', done. Use `show config` to check.');
       },
     },
     {

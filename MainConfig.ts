@@ -57,17 +57,17 @@ class MainConfig {
   private static __config: Config;
 
   private static defaultConfig: Config = {
-    botName: 'NotSpecified',
-    botEmail: 'NotSpecified',
-    admins: ['NotSpecified'],
-    botAuthToken: 'NotSpecified',
-    webAppHook: 'NotSpecified',
+    botName: NotSpecified,
+    botEmail: NotSpecified,
+    admins: [NotSpecified],
+    botAuthToken: NotSpecified,
+    webAppHook: NotSpecified,
     dailyReportTo: [],
     managers: [],
-    dailyStatusRoomId: 'NotSpecified',
-    operationsRoomId: 'NotSpecified',
-    debugRoomId: 'NotSpecified',
-    helpPageUrl: 'NotSpecified',
+    dailyStatusRoomId: NotSpecified,
+    operationsRoomId: NotSpecified,
+    debugRoomId: NotSpecified,
+    helpPageUrl: NotSpecified,
   };
 
   // @ts-ignore
