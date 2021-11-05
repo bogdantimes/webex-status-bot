@@ -58,11 +58,3 @@ To run functions, such as `Bot_AskStatuses`, `Bot_CheckStatuses`, on a regular b
 Some functions require additional permissions. Run a desired function manually to explicitly give it permissions (one time operation).
 
 That's it!
-
-# Buy me a coffee
-
-BTC: bc1qw6huxuc20edg66ddj4k6ze9njkcsplkcjllcv3
-
-DOGE: DTtRQJvF9SYF9kwhYnVm6hvXyPzyD4FVfm
-
-Mastercard (USD, Monobank): 5375 4188 0074 7289
